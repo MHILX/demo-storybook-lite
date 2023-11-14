@@ -1,6 +1,6 @@
 {
-  "name": "demo-storybook",
-  "version": "1.0.0",
+  "name": "@liteobject/demo-my-button",
+  "version": "1.0.4",
   "description": "This is a step by step guide to setup Storybook in React typescript project using Create-react-app tool. Starting from a simple setup to a more useful setup with storybook addons.",
   "main": "index.js",
   "scripts": {

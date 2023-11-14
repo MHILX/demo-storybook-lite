@@ -46,9 +46,11 @@ Follow the link to learn more about [minireset.css](https://github.com/jgthms/mi
 ### Check login
     npm whoami
 
-### To publish the package
+### Publish the package
     npm publish --access=public
 
+### Install the package
+    npm -i @liteobject/demo-my-button
 ---
 ## Links
 - https://storybook.js.org/
