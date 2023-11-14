@@ -72,3 +72,35 @@ jobs:
     #     with:
     #       app-name: ${{ env.AZURE_WEBAPP_NAME }}
     #       images: ${{ env.DOCKER_IMAGE_NAME }}
+
+  deploy-qa:
+    name: Deploy to Dev
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: qa
+      url: ${{ steps.deploy-to-webapp.outputs.weapp-url }}
+    steps:
+      - name: Print Environment Variables & Secrets
+        run: |
+          echo deploying to dev...
+          echo 'MY_ENV_SECRET: ${{ secrets.MY_ENV_SECRET }}'
+          echo 'MY_ENV_VARIABLE: ${{ vars.MY_ENV_VARIABLE }}'
+          echo 'env.AZURE_WEBAPP_NAME: ${{ env.AZURE_WEBAPP_NAME }}'
+          echo 'env.DOCKER_IMAGE_NAME ${{ env.DOCKER_IMAGE_NAME }}'
+
+  deploy-prod:
+    name: Deploy to Dev
+    needs: build
+    runs-on: ubuntu-latest 
+    environment:
+        name: prod
+        url: ${{ steps.deploy-to-webapp.outputs.weapp-url }}
+    steps:
+        - name: Print Environment Variables & Secrets
+          run: |
+            echo deploying to dev...
+            echo 'MY_ENV_SECRET: ${{ secrets.MY_ENV_SECRET }}'
+            echo 'MY_ENV_VARIABLE: ${{ vars.MY_ENV_VARIABLE }}'
+            echo 'env.AZURE_WEBAPP_NAME: ${{ env.AZURE_WEBAPP_NAME }}'
+            echo 'env.DOCKER_IMAGE_NAME ${{ env.DOCKER_IMAGE_NAME }}'
