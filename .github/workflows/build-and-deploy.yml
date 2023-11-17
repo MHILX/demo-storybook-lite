@@ -81,8 +81,8 @@ jobs:
     #       images: ${{ env.DOCKER_IMAGE_NAME }}
 
   deploy-qa:
-    name: Deploy to Dev
-    needs: build
+    name: Deploy to QA
+    needs: [build, deploy-dev]
     runs-on: ubuntu-latest
     environment:
       name: qa
@@ -97,8 +97,8 @@ jobs:
           echo 'env.DOCKER_IMAGE_NAME ${{ env.DOCKER_IMAGE_NAME }}'
 
   deploy-prod:
-    name: Deploy to Dev
-    needs: build
+    name: Deploy to Prod
+    needs: [build, deploy-dev, deploy-qa]
     runs-on: ubuntu-latest
     environment:
       name: prod
