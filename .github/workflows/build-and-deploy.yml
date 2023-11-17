@@ -50,7 +50,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: your-dockerhub-username/storybook-react-app:latest
+          tags: ${{ env.DOCKER_IMAGE_NAME }}
 
     #   - name: Build Docker image
     #     run: docker build -t ${{ env.DOCKER_IMAGE_NAME }} .
