@@ -17,7 +17,7 @@ on:
       - 'release/*'
 
 env:
-  AZURE_WEBAPP_NAME: node-app
+  AZURE_WEBAPP_NAME: mhilxdc
   DOCKER_IMAGE_NAME: mhilx/demo-storybook-lite:latest
 
 jobs:
@@ -74,11 +74,11 @@ jobs:
           echo 'env.AZURE_WEBAPP_NAME: ${{ env.AZURE_WEBAPP_NAME }}'
           echo 'env.DOCKER_IMAGE_NAME ${{ env.DOCKER_IMAGE_NAME }}'
 
-    #   - name: Deploy to Azure Web App
-    #     uses: azure/webapps-deploy@v2
-    #     with:
-    #       app-name: ${{ env.AZURE_WEBAPP_NAME }}
-    #       images: ${{ env.DOCKER_IMAGE_NAME }}
+      - name: Deploy to Azure Web App
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: ${{ env.AZURE_WEBAPP_NAME }}
+          images: ${{ env.DOCKER_IMAGE_NAME }}
 
   deploy-qa:
     name: Deploy to QA
