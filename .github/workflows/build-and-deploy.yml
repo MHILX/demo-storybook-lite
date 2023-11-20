@@ -64,7 +64,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: dev
-      url: ${{ steps.deploy-to-webapp.outputs.weapp-url }}
+      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
     steps:
       - name: Print Environment Variables & Secrets
         run: |
@@ -73,6 +73,7 @@ jobs:
           echo 'MY_ENV_VARIABLE: ${{ vars.MY_ENV_VARIABLE }}'
           echo 'env.AZURE_WEBAPP_NAME: ${{ env.AZURE_WEBAPP_NAME }}'
           echo 'env.DOCKER_IMAGE_NAME ${{ env.DOCKER_IMAGE_NAME }}'
+          echo 'github.sha: ${{ github.sha }}'
 
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v3
