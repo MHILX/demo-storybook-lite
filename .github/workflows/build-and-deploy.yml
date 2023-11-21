@@ -99,13 +99,13 @@ jobs:
           echo 'env.AZURE_WEBAPP_NAME: ${{ env.AZURE_WEBAPP_NAME }}'
           echo 'env.DOCKER_IMAGE_NAME ${{ env.DOCKER_IMAGE_NAME }}'
 
-  deploy-prod:
-    name: Deploy to Prod
+  publish-package:
+    name: Publish to GitHub Package Registry
     needs: [build, deploy-dev, deploy-qa]
     runs-on: ubuntu-latest
     environment:
       name: prod
-      url: ${{ steps.deploy-to-webapp.outputs.weapp-url }}
+      url: https://github.com/MHILX?tab=packages
     steps:
       - name: Print Environment Variables & Secrets
         run: |
@@ -114,3 +114,13 @@ jobs:
           echo 'MY_ENV_VARIABLE: ${{ vars.MY_ENV_VARIABLE }}'
           echo 'env.AZURE_WEBAPP_NAME: ${{ env.AZURE_WEBAPP_NAME }}'
           echo 'env.DOCKER_IMAGE_NAME ${{ env.DOCKER_IMAGE_NAME }}'
+      - uses: actions/checkout@v4
+      # Setup .npmrc file to publish to npm
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '20.x'
+          registry-url: 'https://npm.pkg.github.com'
+      - run: npm ci
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.PKG_RGS_TOKEN }}
