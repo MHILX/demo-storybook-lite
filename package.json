@@ -1,6 +1,6 @@
 {
   "name": "@mhilx/my-button",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Demo for npm package publish pipeline",
   "repository": {
     "type": "git",
