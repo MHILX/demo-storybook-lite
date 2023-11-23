@@ -54,7 +54,7 @@ Follow the link to learn more about [minireset.css](https://github.com/jgthms/mi
 
 ---
 ## Create a docker image
-     docker build -t mhilx/demo-storybook-lite:latest . 
+     docker build --no-cache -t mhilx/demo-storybook-lite:latest . 
 
 ### Run the docker image
     docker run -p 6006:6006 mhilx/demo-storybook-lite:latest
