@@ -26,3 +26,5 @@ export const Button = ({ children, ...props }: Props) => {
     </button>
   );
 };
+
+export default Button;
